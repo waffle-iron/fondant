@@ -40,6 +40,12 @@ defmodule Fondant.Service.Mixfile do
     #
     # Type "mix help deps" for more examples and options
     defp deps do
-        []
+        [
+            { :ecto, "~> 2.1" },
+            { :postgrex, "~> 0.13.2" },
+            { :translecto, "~> 0.2.0" },
+            { :protecto, github: "ScrimpyCat/Protecto" },
+            { :defecto, github: "ScrimpyCat/Defecto", only: :test }
+        ]
     end
 end
