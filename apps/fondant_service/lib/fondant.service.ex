@@ -7,6 +7,7 @@ defmodule Fondant.Service do
         import Supervisor.Spec, warn: false
 
         children = [
+            Fondant.Service.Repo
         ]
 
         opts = [strategy: :one_for_one, name: Fondant.Service.Supervisor]

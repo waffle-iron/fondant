@@ -10,9 +10,12 @@ defmodule Fondant.Service.Mixfile do
             deps_path: "../../deps",
             lockfile: "../../mix.lock",
             elixir: "~> 1.5",
+            elixirc_paths: elixirc_paths(Mix.env),
             build_embedded: Mix.env == :prod,
             start_permanent: Mix.env == :prod,
-            deps: deps()
+            aliases: aliases(),
+            deps: deps(),
+            dialyzer: [plt_add_deps: :transitive]
         ]
     end
 
@@ -25,6 +28,10 @@ defmodule Fondant.Service.Mixfile do
             extra_applications: [:logger]
         ]
     end
+
+    # Specifies which paths to compile per environment.
+    defp elixirc_paths(:test), do: ["lib", "test/support"]
+    defp elixirc_paths(_),     do: ["lib"]
 
     # Dependencies can be Hex packages:
     #
@@ -46,6 +53,20 @@ defmodule Fondant.Service.Mixfile do
             { :translecto, "~> 0.2.0" },
             { :protecto, github: "ScrimpyCat/Protecto" },
             { :defecto, github: "ScrimpyCat/Defecto", only: :test }
+        ]
+    end
+
+    # Aliases are shortcuts or tasks specific to the current project.
+    # For example, to create, migrate and run the seeds file at once:
+    #
+    #     $ mix ecto.setup
+    #
+    # See the documentation for `Mix` for more info on aliases.
+    defp aliases do
+        [
+            "ecto.setup": ["ecto.create", "ecto.migrate"],
+            "ecto.reset": ["ecto.drop", "ecto.setup"],
+            "test": ["ecto.drop --quiet", "ecto.create --quiet", "ecto.migrate", "test"]
         ]
     end
 end
