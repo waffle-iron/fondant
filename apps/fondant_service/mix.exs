@@ -50,7 +50,7 @@ defmodule Fondant.Service.Mixfile do
         [
             { :ecto, "~> 2.1" },
             { :postgrex, "~> 0.13.2" },
-            { :translecto, "~> 0.2.0" },
+            { :translecto, "~> 0.2.1" },
             { :protecto, github: "ScrimpyCat/Protecto" },
             { :defecto, github: "ScrimpyCat/Defecto", only: :test }
         ]
