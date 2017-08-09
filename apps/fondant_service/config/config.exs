@@ -5,6 +5,9 @@ use Mix.Config
 config :fondant_service,
     ecto_repos: [Fondant.Service.Repo]
 
+config :translecto,
+    locale: [schema: { :model, Fondant.Service.Locale.Model }, db: { :table, :locales }]
+
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
 import_config "#{Mix.env}.exs"
