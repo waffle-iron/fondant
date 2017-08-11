@@ -3,6 +3,8 @@ defmodule Fondant.Service.Locale do
       Convenience functions for retrieving locale id's.
     """
 
+    import Ecto.Query
+
     defmodule NotFoundError do
         @moduledoc """
           Exception raised when a locale does not exist.
@@ -66,17 +68,17 @@ defmodule Fondant.Service.Locale do
     def to_locale_id_list(<<language :: binary-size(2)>>), do: [to_locale_id(language, nil)] |> Enum.filter(&(&1 != nil))
 
     defp to_locale_id(language, nil) do
-        query = from locale in Fondant.Service.Locale,
+        query = from locale in Fondant.Service.Locale.Model,
             where: locale.language == ^String.downcase(language) and is_nil(locale.country),
             select: locale.id
 
-        Bonbon.Repo.one(query)
+        Fondant.Service.Repo.one(query)
     end
     defp to_locale_id(language, country) do
-        query = from locale in Fondant.Service.Locale,
+        query = from locale in Fondant.Service.Locale.Model,
             where: locale.language == ^String.downcase(language) and locale.country == ^String.upcase(country),
             select: locale.id
 
-        Bonbon.Repo.one(query)
+        Fondant.Service.Repo.one(query)
     end
 end
