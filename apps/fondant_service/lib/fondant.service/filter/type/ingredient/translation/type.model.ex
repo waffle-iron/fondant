@@ -22,9 +22,9 @@ defmodule Fondant.Service.Filter.Type.Ingredient.Translation.Type.Model do
     """
 
     schema "ingredient_type_translations" do
-        translation
+        translation()
         field :term, :string
-        timestamps
+        timestamps()
     end
 
     @doc """
