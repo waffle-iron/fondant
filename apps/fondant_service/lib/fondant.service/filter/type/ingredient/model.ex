@@ -1,4 +1,4 @@
-defmodule Fondant.Service.Filter.Type.Ingredient do
+defmodule Fondant.Service.Filter.Type.Ingredient.Model do
     use Ecto.Schema
     use Translecto.Schema.Translatable
     import Ecto.Changeset
