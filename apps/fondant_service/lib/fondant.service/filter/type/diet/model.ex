@@ -1,4 +1,4 @@
-defmodule Fondant.Service.Filter.Type.Ingredient.Model do
+defmodule Fondant.Service.Filter.Type.Diet.Model do
     use Ecto.Schema
     use Translecto.Schema.Translatable
     import Ecto.Changeset
@@ -15,7 +15,7 @@ defmodule Fondant.Service.Filter.Type.Ingredient.Model do
     """
 
     schema "diets" do
-        translatable :name, Fondant.Service.Filter.Type.Ingredient.Translation.Name.Model
+        translatable :name, Fondant.Service.Filter.Type.Diet.Translation.Name.Model
         timestamps()
     end
 
